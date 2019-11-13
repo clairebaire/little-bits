@@ -18,7 +18,13 @@ class ToDoApp {
     }
 
     add(name, resolved) {
-        let id = this.items[this.items.length - 1].id + 1;
+        let id = 0;
+        if (this.items.length === 0) {
+            id = 1;
+        } else { 
+            id = this.items[this.items.length - 1].id + 1; 
+        }
+        
         this.items.push({id, name, resolved});
         this.save(this.items);
         console.log(`%cAdded ${resolved ? 'resolved task' : 'unresolved task'} '${name}'`, "color: green; font-style: italic;");
